@@ -9,6 +9,7 @@ ZenPacks.community.NginxStatus.egg-info/dependency_links.txt
 ZenPacks.community.NginxStatus.egg-info/entry_points.txt
 ZenPacks.community.NginxStatus.egg-info/namespace_packages.txt
 ZenPacks.community.NginxStatus.egg-info/not-zip-safe
+ZenPacks.community.NginxStatus.egg-info/test_info.txt
 ZenPacks.community.NginxStatus.egg-info/top_level.txt
 ZenPacks/community/__init__.py
 ZenPacks/community/__init__.pyc
