@@ -185,11 +185,13 @@ get_status() {
     if [ "$secure" = 1 ]
     then
         wget_opts="-O- -q -t 3 -T 3 --no-check-certificate"
+        scheme="https://"
     else        
         wget_opts="-O- -q -t 3 -T 3"
+        scheme="http://"
     fi
 
-    out=$(wget ${wget_opts} http://${hostname}:${port}/${status_page})
+    out=$(wget ${wget_opts} ${scheme}${hostname}:${port}/${status_page})
 
     if [ $? -ne 0 ]
     then
