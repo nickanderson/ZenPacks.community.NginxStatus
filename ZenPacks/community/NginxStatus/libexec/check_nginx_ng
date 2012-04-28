@@ -185,10 +185,19 @@ get_status() {
     if [ "$secure" = 1 ]
     then
         wget_opts="-O- -q -t 3 -T 3 --no-check-certificate"
-        out=`wget ${wget_opts} http://${hostname}:${port}/${status_page}`
     else        
         wget_opts="-O- -q -t 3 -T 3"
-        out=`wget ${wget_opts} http://${hostname}:${port}/${status_page}`
+    fi
+
+    out=$(wget ${wget_opts} http://${hostname}:${port}/${status_page})
+
+    if [ $? -ne 0 ]
+    then
+        # Wording this error is difficult, as wget -q will fail the same way
+        # for a 403 as it does for a connect timeout.
+        # Best that can be done without parsing the error output.
+        echo "UNKNOWN - Unable to access /$status_page"
+        exit $ST_UK
     fi
 
     if [ -z "$out" ]
